@@ -12,17 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+#      - name: Use Node
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 20
 
-      - name: Install dependencies for custom action
-        run: |
-          cd .github/actions/check-lock
-          npm install
+#      - name: Install dependencies for custom action
+#        run: |
+#          npm install
 
       - name: Run package-lock check
-        uses: ./.github/actions/check-lock
+        uses: staafl/javascript-check-dependencies-action@0.0.1
         with:
           rules_url: https://raw.githubusercontent.com/staafl/javascript-check-dependencies-action/refs/heads/master/bad_deps.json
