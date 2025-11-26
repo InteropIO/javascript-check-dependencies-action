@@ -1,0 +1,28 @@
+name: Check package-lock for compromised dependencies
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  check-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies for custom action
+        run: |
+          cd .github/actions/check-lock
+          npm install
+
+      - name: Run package-lock check
+        uses: ./.github/actions/check-lock
+        with:
+          rules_url: https://example.com/bad-deps.json

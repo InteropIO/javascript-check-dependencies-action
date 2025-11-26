@@ -1,0 +1,12 @@
+name: "Check package-lock.json for compromised dependencies"
+description: "Fails the build if certain bad dependency versions are present in any package-lock.json"
+author: "staafl"
+
+inputs:
+  rules_url:
+    description: "URL to JSON map of bad dependencies to semver ranges"
+    required: true
+
+runs:
+  using: "node20"
+  main: "index.js"
