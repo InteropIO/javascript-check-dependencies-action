@@ -27,7 +27,7 @@ name: Check package-lock for compromised dependencies
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
 
 jobs:
@@ -37,18 +37,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies for custom action
-        run: |
-          cd .github/actions/check-lock
-          npm install
-
       - name: Run package-lock check
-        uses: ./.github/actions/check-lock
+        uses: staafl/javascript-check-dependencies-action@v0.0.1
         with:
-          rules_url: https://example.com/bad-deps.json
+          rules_url: https://raw.githubusercontent.com/staafl/javascript-check-dependencies-action/refs/heads/master/bad_deps.json
 ```
