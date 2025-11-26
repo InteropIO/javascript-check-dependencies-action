@@ -1,11 +1,6 @@
-# JavaScript Lockfile Check
+# JavaScript Dependency Check
 
-![Tests](https://github.com/ChromaticHQ/javascript-lockfile-check-action/workflows/Tests/badge.svg) ![Linting & Checks](https://github.com/ChromaticHQ/javascript-lockfile-check-action/workflows/Linting%20&%20Checks/badge.svg)
-
-This action checks that the correct lockfile is present at the root of a
-project. It also checks that no extraneous lockfiles for other JavaScript
-package managers are present. The intent is to enforce a given package manager
-and avoid a scenario where more than one lockfile is present.
+This action checks that no compromised packages are referenced in any package-lock.json files in your repository, using a list of bad versions that's fetched from a URL of your choice.
 
 ## Configuration options
 
